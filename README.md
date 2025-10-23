@@ -4,7 +4,7 @@ A comprehensive, enterprise-grade analytics platform for E-commerce businesses b
 
 ## Live Demo
 
-**Interactive Dashboard**: https://ecommerce-analytics-platform-6xvz1455s-joels-projects-47c72ac7.vercel.app
+**Interactive Dashboard**: https://ecommerce-analytics-platform-6z4metieh-joels-projects-47c72ac7.vercel.app
 
 Experience the full analytics platform with:
 - Real-time metrics and KPIs
