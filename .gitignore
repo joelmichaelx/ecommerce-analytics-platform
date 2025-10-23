@@ -223,3 +223,4 @@ zookeeper_logs/
 *.log
 *.out
 *.err
+.vercel

@@ -1,0 +1,15 @@
+{
+  "name": "e-commerce-sales-analytics-platform",
+  "version": "1.0.0",
+  "description": "A comprehensive, enterprise-grade analytics platform for E-commerce businesses built with modern data engineering and machine learning technologies.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
