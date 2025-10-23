@@ -14,100 +14,369 @@
             min-height: 100vh;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             background: white;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             overflow: hidden;
+            display: flex;
+        }
+        .sidebar {
+            width: 300px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-right: 1px solid #e9ecef;
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
         }
         .header {
             background: linear-gradient(135deg, #1f77b4 0%, #ff7f0e 100%);
             color: white;
-            padding: 30px;
+            padding: 20px;
             text-align: center;
+            margin-bottom: 20px;
         }
         .header h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 2rem;
         }
         .metrics {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
         }
         .metric-card {
             background: #f8f9fa;
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
             border-left: 4px solid #1f77b4;
             text-align: center;
         }
         .metric-value {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: bold;
             color: #1f77b4;
-            margin: 10px 0;
+            margin: 5px 0;
         }
         .metric-label {
             color: #666;
             font-size: 0.9rem;
         }
+        .metric-delta {
+            font-size: 0.8rem;
+            color: #28a745;
+            font-weight: bold;
+        }
         .chart-container {
-            padding: 30px;
+            margin: 20px 0;
         }
         .chart {
             margin: 20px 0;
             height: 400px;
         }
+        .chart-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 30px 0 15px 0;
+            color: #333;
+        }
+        .realtime-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .realtime-card {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+            text-align: center;
+        }
+        .data-table {
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .data-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .data-table th,
+        .data-table td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .data-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        .tabs {
+            display: flex;
+            margin: 20px 0;
+        }
+        .tab {
+            padding: 10px 20px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+        }
+        .tab.active {
+            background: #1f77b4;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
         .footer {
             background: #f8f9fa;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             color: #666;
+            margin-top: 30px;
+        }
+        .sidebar-section {
+            margin-bottom: 25px;
+        }
+        .sidebar-section h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.1rem;
+            color: #333;
+        }
+        .date-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 5px 0;
+        }
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin: 10px 0;
+        }
+        .category-tag {
+            background: #1f77b4;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .category-tag .remove {
+            cursor: pointer;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>E-commerce Sales Analytics Platform</h1>
-            <p>Real-time analytics dashboard for e-commerce businesses</p>
-        </div>
-        
-        <div class="metrics">
-            <div class="metric-card">
-                <div class="metric-value" id="total-revenue">$501,718.93</div>
-                <div class="metric-label">Total Revenue</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value" id="total-orders">5,563</div>
-                <div class="metric-label">Total Orders</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value" id="avg-order-value">$90.19</div>
-                <div class="metric-label">Avg Order Value</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value" id="unique-customers">4,006</div>
-                <div class="metric-label">Unique Customers</div>
-            </div>
-        </div>
-        
-        <div class="chart-container">
-            <h2>Sales Trends</h2>
-            <div id="revenue-chart" class="chart"></div>
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Dashboard Controls</h2>
             
-            <h2>Product Performance</h2>
-            <div id="product-chart" class="chart"></div>
+            <div class="sidebar-section">
+                <h3>Date Range</h3>
+                <label>Start Date:</label>
+                <input type="date" class="date-input" id="startDate" value="2024-01-01">
+                <label>End Date:</label>
+                <input type="date" class="date-input" id="endDate" value="2024-12-31">
+            </div>
             
-            <h2>Customer Segments</h2>
-            <div id="customer-chart" class="chart"></div>
+            <div class="sidebar-section">
+                <h3>Category Filter</h3>
+                <label>Select Categories:</label>
+                <div class="category-tags" id="categoryTags">
+                    <div class="category-tag">
+                        Electronics <span class="remove" onclick="removeCategory(this)">×</span>
+                    </div>
+                    <div class="category-tag">
+                        Computers <span class="remove" onclick="removeCategory(this)">×</span>
+                    </div>
+                    <div class="category-tag">
+                        Audio <span class="remove" onclick="removeCategory(this)">×</span>
+                    </div>
+                </div>
+            </div>
         </div>
         
-        <div class="footer">
-            <p><strong>E-commerce Sales Analytics Platform</strong> | Deployed on Vercel | Last updated: <span id="timestamp"></span></p>
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1>E-commerce Sales Analytics Platform</h1>
+                <p>Real-time analytics dashboard for e-commerce businesses</p>
+            </div>
+            
+            <!-- KPI Metrics -->
+            <div class="section-title">Key Performance Indicators</div>
+            <div class="metrics">
+                <div class="metric-card">
+                    <div class="metric-value" id="total-revenue">$501,718.93</div>
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-delta">↑ +11.9%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="total-orders">5,563</div>
+                    <div class="metric-label">Total Orders</div>
+                    <div class="metric-delta">↑ +18.3%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="avg-order-value">$100.93</div>
+                    <div class="metric-label">Avg Order Value</div>
+                    <div class="metric-delta">↑ +6.7%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="unique-customers">4,006</div>
+                    <div class="metric-label">Unique Customers</div>
+                    <div class="metric-delta">↑ +3.4%</div>
+                </div>
+            </div>
+            
+            <!-- Sales Trends -->
+            <div class="section-title">Sales Trends</div>
+            <div class="chart-row">
+                <div class="chart-container">
+                    <div id="revenue-chart" class="chart"></div>
+                </div>
+                <div class="chart-container">
+                    <div id="orders-chart" class="chart"></div>
+                </div>
+            </div>
+            
+            <!-- Product Performance -->
+            <div class="section-title">Product Performance</div>
+            <div class="chart-row">
+                <div class="chart-container">
+                    <div id="product-chart" class="chart"></div>
+                </div>
+                <div class="chart-container">
+                    <div id="category-chart" class="chart"></div>
+                </div>
+            </div>
+            
+            <!-- Customer Analysis -->
+            <div class="section-title">Customer Analysis</div>
+            <div class="chart-row">
+                <div class="chart-container">
+                    <div id="customer-segments-chart" class="chart"></div>
+                </div>
+                <div class="chart-container">
+                    <div id="customer-spending-chart" class="chart"></div>
+                </div>
+            </div>
+            
+            <!-- Real-time Metrics -->
+            <div class="section-title">Real-time Metrics</div>
+            <div class="realtime-metrics">
+                <div class="realtime-card">
+                    <div class="metric-value" id="live-events">371</div>
+                    <div class="metric-label">Live Events</div>
+                    <div class="metric-delta">↑ Real-time</div>
+                </div>
+                <div class="realtime-card">
+                    <div class="metric-value" id="live-revenue">$4,879.71</div>
+                    <div class="metric-label">Live Revenue</div>
+                    <div class="metric-delta">↑ Real-time</div>
+                </div>
+                <div class="realtime-card">
+                    <div class="metric-value" id="live-conversion">3.9%</div>
+                    <div class="metric-label">Live Conversion</div>
+                    <div class="metric-delta">↑ Real-time</div>
+                </div>
+                <div class="realtime-card">
+                    <div class="metric-value" id="live-aov">$183.54</div>
+                    <div class="metric-label">Live AOV</div>
+                    <div class="metric-delta">↑ Real-time</div>
+                </div>
+            </div>
+            
+            <!-- Detailed Data -->
+            <div class="section-title">Detailed Data</div>
+            <div class="tabs">
+                <div class="tab active" onclick="showTab('sales')">Sales Data</div>
+                <div class="tab" onclick="showTab('products')">Product Performance</div>
+                <div class="tab" onclick="showTab('customers')">Customer Segments</div>
+            </div>
+            
+            <div id="sales-tab" class="tab-content active">
+                <div class="data-table">
+                    <table id="sales-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Revenue</th>
+                                <th>Orders</th>
+                                <th>Customers</th>
+                                <th>Avg Order Value</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sales-data">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div id="products-tab" class="tab-content">
+                <div class="data-table">
+                    <table id="products-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Revenue</th>
+                                <th>Orders</th>
+                                <th>Margin</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-data">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div id="customers-tab" class="tab-content">
+                <div class="data-table">
+                    <table id="customers-table">
+                        <thead>
+                            <tr>
+                                <th>Segment</th>
+                                <th>Count</th>
+                                <th>Avg Spent</th>
+                                <th>Avg Orders</th>
+                                <th>Total Value</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customers-data">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <p><strong>E-commerce Sales Analytics Platform</strong> | Deployed on Vercel | Last updated: <span id="timestamp"></span></p>
+            </div>
         </div>
     </div>
 
@@ -115,7 +384,7 @@
         // Update timestamp
         document.getElementById('timestamp').textContent = new Date().toLocaleString();
         
-        // Generate sample data
+        // Generate comprehensive sample data
         function generateSalesData() {
             const data = [];
             const startDate = new Date('2024-01-01');
@@ -130,21 +399,66 @@
                 
                 const revenue = Math.max(0, baseSales + seasonality + weeklyPattern + noise);
                 const orders = Math.max(1, Math.floor(revenue / (50 + Math.random() * 100)));
+                const customers = Math.floor(orders * (0.6 + Math.random() * 0.3));
                 
                 data.push({
                     date: date.toISOString().split('T')[0],
                     revenue: revenue,
-                    orders: orders
+                    orders: orders,
+                    customers: customers,
+                    avg_order_value: revenue / orders
                 });
             }
             return data;
         }
         
-        // Revenue trend chart
+        function generateProductData() {
+            const products = [
+                'iPhone 15 Pro', 'Samsung Galaxy S24', 'MacBook Pro', 'Dell XPS 13',
+                'AirPods Pro', 'Sony WH-1000XM5', 'iPad Air', 'Surface Pro 9',
+                'Nintendo Switch', 'PlayStation 5', 'Xbox Series X', 'Apple Watch',
+                'Fitbit Versa', 'GoPro Hero', 'Canon EOS R5', 'Nikon Z9',
+                'Tesla Model 3', 'BMW i3', 'Mercedes EQS', 'Audi e-tron'
+            ];
+            
+            const categories = ['Electronics', 'Computers', 'Audio', 'Gaming', 'Wearables', 'Cameras', 'Automotive'];
+            
+            return products.map(product => {
+                const category = categories[Math.floor(Math.random() * categories.length)];
+                const revenue = Math.random() * 500000 + 10000;
+                const orders = Math.floor(revenue / (100 + Math.random() * 900));
+                const margin = 0.1 + Math.random() * 0.4;
+                
+                return {
+                    product: product,
+                    category: category,
+                    revenue: revenue,
+                    orders: orders,
+                    margin: margin,
+                    profit: revenue * margin
+                };
+            });
+        }
+        
+        function generateCustomerSegments() {
+            return [
+                { segment: 'Champions', count: 150, avg_spent: 2500, avg_orders: 25, total_value: 375000 },
+                { segment: 'Loyal Customers', count: 300, avg_spent: 1200, avg_orders: 15, total_value: 360000 },
+                { segment: 'New Customers', count: 200, avg_spent: 300, avg_orders: 3, total_value: 60000 },
+                { segment: 'At Risk', count: 100, avg_spent: 800, avg_orders: 8, total_value: 80000 },
+                { segment: 'Cannot Lose Them', count: 50, avg_spent: 5000, avg_orders: 50, total_value: 250000 }
+            ];
+        }
+        
+        // Initialize data
         const salesData = generateSalesData();
+        const productData = generateProductData();
+        const customerSegments = generateCustomerSegments();
+        
+        // Revenue trend chart
         const revenueTrace = {
-            x: salesData.map(d => d.date),
-            y: salesData.map(d => d.revenue),
+            x: salesData.slice(0, 30).map(d => d.date),
+            y: salesData.slice(0, 30).map(d => d.revenue),
             type: 'scatter',
             mode: 'lines',
             name: 'Daily Revenue',
@@ -158,76 +472,173 @@
             margin: { t: 50, b: 50, l: 50, r: 50 }
         });
         
-        // Product performance chart
-        const products = [
-            { name: 'iPhone 15 Pro', revenue: 450000, category: 'Electronics' },
-            { name: 'Samsung Galaxy S24', revenue: 380000, category: 'Electronics' },
-            { name: 'MacBook Pro', revenue: 320000, category: 'Computers' },
-            { name: 'Dell XPS 13', revenue: 280000, category: 'Computers' },
-            { name: 'AirPods Pro', revenue: 250000, category: 'Audio' },
-            { name: 'Sony WH-1000XM5', revenue: 220000, category: 'Audio' },
-            { name: 'iPad Air', revenue: 200000, category: 'Electronics' },
-            { name: 'Surface Pro 9', revenue: 180000, category: 'Computers' }
-        ];
+        // Orders trend chart
+        const ordersTrace = {
+            x: salesData.slice(0, 30).map(d => d.date),
+            y: salesData.slice(0, 30).map(d => d.orders),
+            type: 'scatter',
+            mode: 'lines',
+            name: 'Daily Orders',
+            line: { color: '#ff7f0e', width: 2 }
+        };
         
+        Plotly.newPlot('orders-chart', [ordersTrace], {
+            title: 'Daily Orders Trend',
+            xaxis: { title: 'Date' },
+            yaxis: { title: 'Orders' },
+            margin: { t: 50, b: 50, l: 50, r: 50 }
+        });
+        
+        // Product performance chart
+        const topProducts = productData.sort((a, b) => b.revenue - a.revenue).slice(0, 10);
         const productTrace = {
-            x: products.map(p => p.revenue),
-            y: products.map(p => p.name),
+            x: topProducts.map(p => p.revenue),
+            y: topProducts.map(p => p.product),
             type: 'bar',
             orientation: 'h',
-            marker: { color: '#ff7f0e' }
+            marker: { color: '#2ca02c' }
         };
         
         Plotly.newPlot('product-chart', [productTrace], {
-            title: 'Top Products by Revenue',
+            title: 'Top 10 Products by Revenue',
             xaxis: { title: 'Revenue ($)' },
             yaxis: { title: 'Products' },
             margin: { t: 50, b: 50, l: 150, r: 50 }
         });
         
-        // Customer segments chart
-        const segments = [
-            { name: 'Champions', count: 150, avgSpent: 2500 },
-            { name: 'Loyal Customers', count: 300, avgSpent: 1200 },
-            { name: 'New Customers', count: 200, avgSpent: 300 },
-            { name: 'At Risk', count: 100, avgSpent: 800 },
-            { name: 'Cannot Lose Them', count: 50, avgSpent: 5000 }
-        ];
+        // Category distribution chart
+        const categoryRevenue = {};
+        productData.forEach(p => {
+            categoryRevenue[p.category] = (categoryRevenue[p.category] || 0) + p.revenue;
+        });
         
-        const segmentTrace = {
-            x: segments.map(s => s.name),
-            y: segments.map(s => s.count),
-            type: 'bar',
-            marker: { color: '#2ca02c' }
+        const categoryTrace = {
+            values: Object.values(categoryRevenue),
+            labels: Object.keys(categoryRevenue),
+            type: 'pie',
+            marker: { colors: ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2'] }
         };
         
-        Plotly.newPlot('customer-chart', [segmentTrace], {
+        Plotly.newPlot('category-chart', [categoryTrace], {
+            title: 'Revenue by Category',
+            margin: { t: 50, b: 50, l: 50, r: 50 }
+        });
+        
+        // Customer segments chart
+        const segmentTrace = {
+            x: customerSegments.map(s => s.segment),
+            y: customerSegments.map(s => s.count),
+            type: 'bar',
+            marker: { color: '#17a2b8' }
+        };
+        
+        Plotly.newPlot('customer-segments-chart', [segmentTrace], {
             title: 'Customer Distribution by Segment',
             xaxis: { title: 'Customer Segments' },
             yaxis: { title: 'Number of Customers' },
             margin: { t: 50, b: 50, l: 50, r: 50 }
         });
         
-        // Update metrics with animation
-        function animateValue(element, start, end, duration) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const current = Math.floor(progress * (end - start) + start);
-                element.textContent = current.toLocaleString();
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
-            };
-            window.requestAnimationFrame(step);
+        // Customer spending chart
+        const spendingTrace = {
+            x: customerSegments.map(s => s.segment),
+            y: customerSegments.map(s => s.avg_spent),
+            type: 'bar',
+            marker: { color: '#fd7e14' }
+        };
+        
+        Plotly.newPlot('customer-spending-chart', [spendingTrace], {
+            title: 'Average Spending by Segment',
+            xaxis: { title: 'Customer Segments' },
+            yaxis: { title: 'Average Spending ($)' },
+            margin: { t: 50, b: 50, l: 50, r: 50 }
+        });
+        
+        // Populate data tables
+        function populateSalesTable() {
+            const tbody = document.getElementById('sales-data');
+            tbody.innerHTML = '';
+            salesData.slice(0, 20).forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${row.date}</td>
+                    <td>$${row.revenue.toFixed(2)}</td>
+                    <td>${row.orders}</td>
+                    <td>${row.customers}</td>
+                    <td>$${row.avg_order_value.toFixed(2)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
         }
         
-        // Animate metrics on load
-        setTimeout(() => {
-            animateValue(document.getElementById('total-orders'), 0, 5563, 2000);
-            animateValue(document.getElementById('unique-customers'), 0, 4006, 2000);
-        }, 500);
+        function populateProductsTable() {
+            const tbody = document.getElementById('products-data');
+            tbody.innerHTML = '';
+            productData.slice(0, 20).forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${row.product}</td>
+                    <td>${row.category}</td>
+                    <td>$${row.revenue.toFixed(2)}</td>
+                    <td>${row.orders}</td>
+                    <td>${(row.margin * 100).toFixed(1)}%</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+        
+        function populateCustomersTable() {
+            const tbody = document.getElementById('customers-data');
+            tbody.innerHTML = '';
+            customerSegments.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${row.segment}</td>
+                    <td>${row.count}</td>
+                    <td>$${row.avg_spent.toFixed(2)}</td>
+                    <td>${row.avg_orders}</td>
+                    <td>$${row.total_value.toFixed(2)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+        
+        // Tab functionality
+        function showTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName + '-tab').classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+        
+        // Category tag functionality
+        function removeCategory(element) {
+            element.parentElement.remove();
+        }
+        
+        // Initialize tables
+        populateSalesTable();
+        populateProductsTable();
+        populateCustomersTable();
+        
+        // Update real-time metrics periodically
+        setInterval(() => {
+            document.getElementById('live-events').textContent = Math.floor(Math.random() * 1000) + 100;
+            document.getElementById('live-revenue').textContent = '$' + (Math.random() * 5000 + 1000).toFixed(2);
+            document.getElementById('live-conversion').textContent = (Math.random() * 5 + 2).toFixed(1) + '%';
+            document.getElementById('live-aov').textContent = '$' + (Math.random() * 200 + 50).toFixed(2);
+        }, 5000);
     </script>
 </body>
 </html>
