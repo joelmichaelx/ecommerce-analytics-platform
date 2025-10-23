@@ -2,9 +2,9 @@
 
 A comprehensive, enterprise-grade analytics platform for E-commerce businesses built with modern data engineering and machine learning technologies.
 
-## 🚀 Live Demo
+## Live Demo
 
-**📊 Interactive Dashboard**: https://ecommerce-analytics-platform-6xvz1455s-joels-projects-47c72ac7.vercel.app
+**Interactive Dashboard**: https://ecommerce-analytics-platform-6xvz1455s-joels-projects-47c72ac7.vercel.app
 
 Experience the full analytics platform with:
 - Real-time metrics and KPIs
@@ -13,7 +13,7 @@ Experience the full analytics platform with:
 - Customer segmentation analysis
 - Mobile-responsive design
 
-## 🎯 Features
+## Features
 
 ### Core Analytics
 - **Real-time Sales Analytics** - Live dashboards with streaming data
@@ -47,7 +47,7 @@ Experience the full analytics platform with:
 - **Jupyter Notebooks** - Data science and experimentation
 - **Docker** - Containerized deployment
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
@@ -68,7 +68,7 @@ Experience the full analytics platform with:
 └─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### Data Engineering
 - **Apache Airflow** 2.7.3 - Workflow orchestration
@@ -102,7 +102,7 @@ Experience the full analytics platform with:
 - **Docker Compose** - Multi-container orchestration
 - **Nginx** - Reverse proxy and load balancing
 
-## 📦 Installation
+## Installation
 
 ### Prerequisites
 - Docker and Docker Compose
@@ -193,7 +193,7 @@ airflow webserver --port 8080
 airflow scheduler
 ```
 
-## 📊 Usage
+## Usage
 
 ### API Endpoints
 
@@ -262,7 +262,7 @@ The platform includes automated data pipelines:
 5. **Predictions** - Generates real-time predictions
 6. **Monitoring** - Tracks data quality and performance
 
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -299,7 +299,7 @@ GRAFANA_PORT=3000
 3. **Build custom dashboards** in `src/dashboard/`
 4. **Configure alerts** in `src/monitoring/alerting.py`
 
-## 📈 Monitoring
+## Monitoring
 
 ### Metrics
 - **Business Metrics**: Revenue, orders, customers, conversion rates
@@ -319,7 +319,7 @@ GRAFANA_PORT=3000
 - **Technical Dashboard**: System performance and health
 - **ML Dashboard**: Model performance and predictions
 
-## 🧪 Testing
+## Testing
 
 ### Run Tests
 ```bash
@@ -338,7 +338,7 @@ pytest tests/load/
 pytest --cov=src tests/
 ```
 
-## 🚀 Deployment
+## Deployment
 
 ### Production Deployment
 
@@ -376,7 +376,7 @@ The platform can be deployed on:
 - **Azure** - AKS, Azure Database, Redis Cache
 - **Kubernetes** - Helm charts available
 
-## 📚 Documentation
+## Documentation
 
 ### API Documentation
 - **Swagger UI**: http://localhost:8000/docs
@@ -393,7 +393,7 @@ The platform can be deployed on:
 - **ML Experiments**: `notebooks/ml/`
 - **Tutorials**: `notebooks/tutorials/`
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -417,17 +417,17 @@ flake8 src/
 pytest
 ```
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🆘 Support
+## Support
 
 - **Documentation**: [Wiki](https://github.com/joelmichaelx/ecommerce-analytics-platform/wiki)
 - **Issues**: [GitHub Issues](https://github.com/joelmichaelx/ecommerce-analytics-platform/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/joelmichaelx/ecommerce-analytics-platform/discussions)
 
-## 🎯 Roadmap
+## Roadmap
 
 ### Phase 1 (Current)
 - ✅ Core analytics platform
