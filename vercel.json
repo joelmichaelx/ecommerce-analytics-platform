@@ -4,10 +4,6 @@
     {
       "src": "api/**/*.py",
       "use": "@vercel/python"
-    },
-    {
-      "src": "streamlit_app.py",
-      "use": "@vercel/python"
     }
   ],
   "routes": [
@@ -17,10 +13,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/streamlit_app.py"
+      "dest": "/index.html"
     }
-  ],
-  "env": {
-    "PYTHONPATH": "."
-  }
+  ]
 }

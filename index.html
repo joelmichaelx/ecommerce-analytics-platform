@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Sales Analytics Platform</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #1f77b4 0%, #ff7f0e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+        .metric-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #1f77b4;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1f77b4;
+            margin: 10px 0;
+        }
+        .metric-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .chart-container {
+            padding: 30px;
+        }
+        .chart {
+            margin: 20px 0;
+            height: 400px;
+        }
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 E-commerce Sales Analytics Platform</h1>
+            <p>Real-time analytics dashboard for e-commerce businesses</p>
+        </div>
+        
+        <div class="metrics">
+            <div class="metric-card">
+                <div class="metric-value" id="total-revenue">$501,718.93</div>
+                <div class="metric-label">💰 Total Revenue</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="total-orders">5,563</div>
+                <div class="metric-label">🛒 Total Orders</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="avg-order-value">$90.19</div>
+                <div class="metric-label">📊 Avg Order Value</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="unique-customers">4,006</div>
+                <div class="metric-label">👥 Unique Customers</div>
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <h2>📈 Sales Trends</h2>
+            <div id="revenue-chart" class="chart"></div>
+            
+            <h2>🛍️ Product Performance</h2>
+            <div id="product-chart" class="chart"></div>
+            
+            <h2>👥 Customer Segments</h2>
+            <div id="customer-chart" class="chart"></div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>E-commerce Sales Analytics Platform</strong> | Deployed on Vercel | Last updated: <span id="timestamp"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Update timestamp
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+        
+        // Generate sample data
+        function generateSalesData() {
+            const data = [];
+            const startDate = new Date('2024-01-01');
+            for (let i = 0; i < 365; i++) {
+                const date = new Date(startDate);
+                date.setDate(startDate.getDate() + i);
+                
+                const baseSales = 1000 + i * 2;
+                const seasonality = 200 * Math.sin(2 * Math.PI * i / 365);
+                const weeklyPattern = 100 * Math.sin(2 * Math.PI * i / 7);
+                const noise = (Math.random() - 0.5) * 200;
+                
+                const revenue = Math.max(0, baseSales + seasonality + weeklyPattern + noise);
+                const orders = Math.max(1, Math.floor(revenue / (50 + Math.random() * 100)));
+                
+                data.push({
+                    date: date.toISOString().split('T')[0],
+                    revenue: revenue,
+                    orders: orders
+                });
+            }
+            return data;
+        }
+        
+        // Revenue trend chart
+        const salesData = generateSalesData();
+        const revenueTrace = {
+            x: salesData.map(d => d.date),
+            y: salesData.map(d => d.revenue),
+            type: 'scatter',
+            mode: 'lines',
+            name: 'Daily Revenue',
+            line: { color: '#1f77b4', width: 2 }
+        };
+        
+        Plotly.newPlot('revenue-chart', [revenueTrace], {
+            title: 'Daily Revenue Trend',
+            xaxis: { title: 'Date' },
+            yaxis: { title: 'Revenue ($)' },
+            margin: { t: 50, b: 50, l: 50, r: 50 }
+        });
+        
+        // Product performance chart
+        const products = [
+            { name: 'iPhone 15 Pro', revenue: 450000, category: 'Electronics' },
+            { name: 'Samsung Galaxy S24', revenue: 380000, category: 'Electronics' },
+            { name: 'MacBook Pro', revenue: 320000, category: 'Computers' },
+            { name: 'Dell XPS 13', revenue: 280000, category: 'Computers' },
+            { name: 'AirPods Pro', revenue: 250000, category: 'Audio' },
+            { name: 'Sony WH-1000XM5', revenue: 220000, category: 'Audio' },
+            { name: 'iPad Air', revenue: 200000, category: 'Electronics' },
+            { name: 'Surface Pro 9', revenue: 180000, category: 'Computers' }
+        ];
+        
+        const productTrace = {
+            x: products.map(p => p.revenue),
+            y: products.map(p => p.name),
+            type: 'bar',
+            orientation: 'h',
+            marker: { color: '#ff7f0e' }
+        };
+        
+        Plotly.newPlot('product-chart', [productTrace], {
+            title: 'Top Products by Revenue',
+            xaxis: { title: 'Revenue ($)' },
+            yaxis: { title: 'Products' },
+            margin: { t: 50, b: 50, l: 150, r: 50 }
+        });
+        
+        // Customer segments chart
+        const segments = [
+            { name: 'Champions', count: 150, avgSpent: 2500 },
+            { name: 'Loyal Customers', count: 300, avgSpent: 1200 },
+            { name: 'New Customers', count: 200, avgSpent: 300 },
+            { name: 'At Risk', count: 100, avgSpent: 800 },
+            { name: 'Cannot Lose Them', count: 50, avgSpent: 5000 }
+        ];
+        
+        const segmentTrace = {
+            x: segments.map(s => s.name),
+            y: segments.map(s => s.count),
+            type: 'bar',
+            marker: { color: '#2ca02c' }
+        };
+        
+        Plotly.newPlot('customer-chart', [segmentTrace], {
+            title: 'Customer Distribution by Segment',
+            xaxis: { title: 'Customer Segments' },
+            yaxis: { title: 'Number of Customers' },
+            margin: { t: 50, b: 50, l: 50, r: 50 }
+        });
+        
+        // Update metrics with animation
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const current = Math.floor(progress * (end - start) + start);
+                element.textContent = current.toLocaleString();
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        // Animate metrics on load
+        setTimeout(() => {
+            animateValue(document.getElementById('total-orders'), 0, 5563, 2000);
+            animateValue(document.getElementById('unique-customers'), 0, 4006, 2000);
+        }, 500);
+    </script>
+</body>
+</html>
