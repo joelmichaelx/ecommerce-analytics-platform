@@ -1,8 +1,19 @@
-# E-commerce Sales Analytics Platform
+# E-commerce Analytics Sales Platform
 
 A comprehensive, enterprise-grade analytics platform for E-commerce businesses built with modern data engineering and machine learning technologies.
 
-## 🚀 Features
+## 🚀 Live Demo
+
+**📊 Interactive Dashboard**: https://ecommerce-analytics-platform-6xvz1455s-joels-projects-47c72ac7.vercel.app
+
+Experience the full analytics platform with:
+- Real-time metrics and KPIs
+- Interactive sales trends and visualizations
+- Product performance analytics
+- Customer segmentation analysis
+- Mobile-responsive design
+
+## 🎯 Features
 
 ### Core Analytics
 - **Real-time Sales Analytics** - Live dashboards with streaming data
@@ -103,8 +114,8 @@ A comprehensive, enterprise-grade analytics platform for E-commerce businesses b
 
 1. **Clone the repository**
 ```bash
-git clone <repository-url>
-cd ecommerce-sales-analytics-platform
+git clone https://github.com/joelmichaelx/ecommerce-analytics-platform.git
+cd ecommerce-analytics-platform
 ```
 
 2. **Set up environment variables**
@@ -412,9 +423,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🆘 Support
 
-- **Documentation**: [Wiki](https://github.com/your-repo/wiki)
-- **Issues**: [GitHub Issues](https://github.com/your-repo/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-repo/discussions)
+- **Documentation**: [Wiki](https://github.com/joelmichaelx/ecommerce-analytics-platform/wiki)
+- **Issues**: [GitHub Issues](https://github.com/joelmichaelx/ecommerce-analytics-platform/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/joelmichaelx/ecommerce-analytics-platform/discussions)
 
 ## 🎯 Roadmap
 
